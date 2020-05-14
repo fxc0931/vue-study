@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+        <p x-text="name"></p>
+        <p>{{age}}</p>
+        <p>{{doubleAge}}</p>
+        <input type="text" x-model="name">
+        <button @click="changeName">呵呵</button>
+        <div x-html="html"></div>
+    </div>
+    <script src="compile.js"></script>
+    <script src="xvue.js"></script>
+    <script>
+        const app = new XVue({
+            el: '#app',
+            data: {
+                name: 'I am test',
+                age: 12,
+                html: `<button>这是一个按钮</button>`
+            },
+            created() {
+                console.log('开始啦');
+           setTimeout(() => {
+               this.name = '我是测试'
+           }, 2000);     
+            },
+            methods: {
+                changeName() {
+                    this.name="我是希晨"
+                    this.age = 30
+                }
+            }
+        })
+        // app.$data.test = "hello, fan"
+        // app.test = "hello, fan"
+        // app.$data.foo.bar = "hello, bar"
+    </script>
+</body>
+
+</html>
